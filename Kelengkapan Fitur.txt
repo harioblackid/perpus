@@ -1,0 +1,16 @@
+Kelengkapan Fitur
+1.  Menyimpan Data
+2.  Menampilkan data
+3.  Menghapus data
+4.  Mengubah data  
+5.  Validasi Form
+    -  Session (Tiket)
+6.  Authentikasi
+    -  Sistem Login
+    -  Pembatasan registrasi dengan pengguna yang sama
+7.  Pembatasan Hak Akses
+8.  Membuat Transaksi Peminjaman Buku
+    - Relationship Table
+9.  Menampilkan Laporan
+    - 
+10. Mengaktifkan Notifikasi dengan library Javascript
