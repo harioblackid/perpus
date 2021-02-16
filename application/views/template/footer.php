@@ -20,22 +20,26 @@
 <script src="<?= base_url('assets') ?>/dist/js/adminlte.min.js"></script>
 <!-- Bootbox -->
 <script src="<?= base_url('assets') ?>/dist/js/bootbox.all.min.js"></script>
+
 <script>
-	
-	//Fungsi untuk confirm HAPUS
-  $(document).on("click", "#btn-delete", function(link) {
-    bootbox.confirm({
-			message 	: "Anda yakin ingin menghapus data tersebut?",
-			callback	: function(result)
-			{ 
-				if(result == true)
-				{
-					
-				}
-				console.log(" Hasil nya adalah " + result);
-			}
-		});
-  });
-  </script>
+$(document).on("click", "#delete-btn", function(e){
+  let url = $(this).data('link');
+  bootbox.confirm({
+    title: "Warning",
+    message: "Anda yakin ingin menghapusnya?",
+    
+    callback: function(result){
+      if(result == true){
+        window.location.href = url
+      }
+      else {
+        bootbox.hideAll();
+      }
+    }
+    
+  })
+});
+</script>
+
 </body>
 </html>
