@@ -36,4 +36,19 @@ class M_user_model extends CI_Model
     //$this->db->query("DELETE FROM `{$this->table_name}` WHERE id_user = `{$key}`");
     return true;
   }
+
+  public function getMember($id)
+  {
+    return $this->db->get_where($this->table_name, ['status' => 'member', 'id_user' => $id]);
+  }
+
+  public function getPetugas($id)
+  {
+    return $this->db->get_where($this->table_name, ['status' => 'petugas', 'id_user' => $id]);
+  }
+
+  public function ubahMember($data, $id)
+  {
+    return $this->db->update($this->table_name, $data, ['id_user' => $id]);
+  }
 }

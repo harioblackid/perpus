@@ -44,8 +44,8 @@
 										<td><?= $row->birthdate; ?></td>
 										<td><?= $row->gender; ?></td>
 										<td>
-											<a href="" class="btn btn-success btn-sm">Edit</a>
-											<a href="#" class="btn btn-danger btn-sm" id="btn-delete" data-url="<?= base_url('user/removeuser/') . $row->id_user ?>">
+											<a href="<?= base_url('user/editmember/'). $row->id_user; ?>" class="btn btn-success btn-sm">Edit</a>
+											<a href="<?= base_url('user/removeMember/') . $row->id_user; ?>" class="btn btn-danger btn-sm">
 												Delete
 											</a>
 										</td>

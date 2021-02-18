@@ -106,5 +106,47 @@ class User extends CI_Controller {
 			echo "Data berhasil dihapus";
 		}
 	}
+
+	public function editMember($key)
+	{
+		$data['title'] = "Edit Member";
+		$data['member'] = $this->user->getMember($key)->row();
+		$this->load->view('template/header', $data);
+		//Body
+		$this->load->view('v_member_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function editPetugas($key)
+	{
+		$data['title'] = "Edit Member";
+		$data['petugas'] = $this->user->getPetugas($key)->row();
+		$this->load->view('template/header', $data);
+		//Body
+		$this->load->view('v_petugas_edit', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function updateMember()
+	{
+		$id_user = $this->input->post('id_user');
+		$data = array(
+			// "key" => "value"
+			// "kolom pada database" => 'fullname' => $this->input->post('attribute_name'),
+			'email'		=> $this->input->post('inputEmail'),
+			'fullname' => $this->input->post('inputFullname'),
+			'place' => $this->input->post('inputPlace'),
+			'birthdate' => $this->input->post('inputBd'),
+			'gender' => $this->input->post('inputGender'),
+			'status' => "member"
+		);
+
+		$query = $this->user->ubahMember($data, $id_user);
+		if($query == true){
+			echo "Data berhasil diubah";
+		}
+	}
+
+	
 }
  
