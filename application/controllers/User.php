@@ -37,11 +37,63 @@ class User extends CI_Controller {
 	
 	public function addmember()
 	{
-		$data['title'] = "Add Member";
-		$this->load->view('template/header', $data);
-		//Body
-		$this->load->view('v_member_add');
-		$this->load->view('template/footer');
+		//Buat Rule Validation
+		$this->form_validation->set_rules(
+			'inputEmail', 
+			'Email', 
+			'trim|required|valid_email'
+		);
+
+		$this->form_validation->set_rules(
+			'inputFullname', 
+			'Fullname', 
+			'trim|required|max_length[100]'
+		);
+
+		$this->form_validation->set_rules(
+			'inputPlace', 
+			'Place', 
+			'trim|required|max_length[100]'
+		);
+
+		$this->form_validation->set_rules(
+			'inputBd', 
+			'Birthdate', 
+			'trim|required'
+		);
+
+		$this->form_validation->set_rules(
+			'inputGender', 
+			'Gender', 
+			'trim|required'
+		);
+
+		$this->form_validation->set_rules(
+			'new_password', 
+			'Password', 
+			'trim|required|min_length[4] | matches[inputPassword]',
+		);
+
+		$this->form_validation->set_rules(
+			'inputPassword', 
+			'Password', 
+			'trim|required|min_length[4]|matches[new_password]'
+		);
+		
+		if($this->form_validation->run() == false)
+		{
+      //Tampilkan View
+			$data['title'] = "Add Member";
+			$this->load->view('template/header', $data);
+			//Body
+			$this->load->view('v_member_add');
+			$this->load->view('template/footer');     
+    }
+    else
+		{
+			//Jika Validasinya Sukses
+      $this->saveMember();
+    }
 	}
 
 	public function addpetugas()
@@ -74,9 +126,9 @@ class User extends CI_Controller {
 		
 		if($query === true){
 			//Jika $query = true 
-			echo "Data berhasil disimpan!";
+			$this->session->set_flashdata('pesan', '<div class="alert alert-primary" role="alert"> Data berhasil disimpan! </div>');
+			redirect('user');
 		}
-		
 	}
 
 	public function savePetugas()

@@ -25,6 +25,7 @@
               <h3 class="card-title">Fill the form below</h3>
             </div>
             <div class="card-body">
+              
               <!--               
               Penggunaan Atribut Form
               action = lokasi halaman yang akan dituju => http://localhost/perpus/AddMember/save
@@ -32,16 +33,19 @@
               name = optional (Digunakan jika akan mengaktifkan VALIDASI) 
               -->
 
-              <form action="<?= base_url('User/saveMember') ?>" method="post" class="form-horizontal">
+              <form action="" method="post" class="form-horizontal">
                 <div class="form-group row">
                   <label for="email" class="col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
                     <input 
-                      type="email" 
-                      class="form-control" 
-                      id="email" 
+                      type    ="email" 
+                      class   ="form-control" 
+                      id      ="email" 
                       placeholder="Email" 
-                      name="inputEmail">
+                      name    ="inputEmail"
+                      >
+                      <?= form_error('inputEmail', '<small class="text-danger">', '</small>'); ?>
+
                   </div>
                 </div>
                 <div class="form-group row">
@@ -53,41 +57,67 @@
                       id          ="fullnameID" 
                       placeholder ="Fullname" 
                       name        ="inputFullname">
-
+                      <?= form_error('inputFullname', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="placeID" class="col-sm-4 col-form-label">Place</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="placeID" placeholder="Place" name="inputPlace">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="placeID" 
+                      placeholder="Place" 
+                      name="inputPlace">
+                      <?= form_error('inputPlace', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="birthdateID" class="col-sm-4 col-form-label">Birthdate</label>
                   <div class="col-sm-8">
-                    <input type="date" class="form-control" id="birthdateID" placeholder="Birthdate" name="inputBd">
+                    <input 
+                      type="date" 
+                      class="form-control" 
+                      id="birthdateID" 
+                      placeholder="Birthdate" 
+                      name="inputBd">
+                      <?= form_error('inputBd', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="genderID" class="col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
                     <select class="form-control" name="inputGender" id="genderID">
+                      <option value="" selected> -- Select One -- </option>
                       <option value="male"> Male </option>
                       <option value="female"> Female </option>
                     </select>
+
+                    <?= form_error('inputGender', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 
                 <div class="form-group row">
                   <label for="new" class="col-sm-4 col-form-label">New Password</label>
                   <div class="col-sm-8">
-                    <input type="password" class="form-control" id="new">
+                    <input 
+                      type="password" 
+                      class="form-control" 
+                      id="new" 
+                      name="new_password">
+                      <?= form_error('new_password', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="password" class="col-sm-4 col-form-label">Retype Password</label>
                   <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" name="inputPassword">
+                    <input 
+                      type="password" 
+                      class="form-control" 
+                      id="password" 
+                      name="inputPassword">
+
+                      
                   </div>
                 </div>
 

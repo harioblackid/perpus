@@ -18,6 +18,9 @@
 	  <div class="container">
 			<div class="row">
 				<div class="col-12">
+					<!-- Notifikasi Berhasil -->
+					<?= $this->session->flashdata('pesan'); ?>
+
 					<div class="card card-primary card-outline">
 						<div class="card-header">
 							<a href="<?= base_url('User/addmember') ?>" class="btn btn-primary btn-sm">
