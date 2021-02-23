@@ -48,9 +48,10 @@
 										<td><?= $row->gender; ?></td>
 										<td>
 											<a href="<?= base_url('user/editmember/'). $row->id_user; ?>" class="btn btn-success btn-sm">Edit</a>
-											<a href="<?= base_url('user/removeMember/') . $row->id_user; ?>" class="btn btn-danger btn-sm">
-												Delete
-											</a>
+											<button class="btn btn-danger btn-sm" data-link="<?= base_url('user/removemember/') . $row->id_user ?>" id="btn-delete">
+												<i class="fa fa-trash"></i>
+											</button>
+											
 										</td>
 									</tr>
 								<?php endforeach; ?>

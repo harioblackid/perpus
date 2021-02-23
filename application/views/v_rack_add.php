@@ -32,7 +32,7 @@
               name = optional (Digunakan jika akan mengaktifkan VALIDASI) 
               -->
 
-              <form action="<?= base_url('User/saveMember') ?>" method="post" class="form-horizontal">
+              <form action="" method="post" class="form-horizontal">
                 <div class="form-group row">
                   <label for="rackID" class="col-sm-4 col-form-label">Rack Name</label>
                   <div class="col-sm-8">
@@ -42,6 +42,8 @@
                       id="rackID" 
                       placeholder="Email" 
                       name="inputRack">
+
+                      <?= form_error('inputRack', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 

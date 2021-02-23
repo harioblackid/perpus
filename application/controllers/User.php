@@ -98,11 +98,58 @@ class User extends CI_Controller {
 
 	public function addpetugas()
 	{
-		$data['title'] = "Add Petugas";
-		$this->load->view('template/header', $data);
-		//Body
-		$this->load->view('v_petugas_add');
-		$this->load->view('template/footer');
+		//Buat Rule Validation
+		$this->form_validation->set_rules(
+			'inputEmail', 
+			'Email', 
+			'trim|required|valid_email'
+		);
+
+		$this->form_validation->set_rules(
+			'inputFullname', 
+			'Fullname', 
+			'trim|required|max_length[100]'
+		);
+
+		$this->form_validation->set_rules(
+			'inputPlace', 
+			'Place', 
+			'trim|required|max_length[100]'
+		);
+
+		$this->form_validation->set_rules(
+			'inputBd', 
+			'Birthdate', 
+			'trim|required'
+		);
+
+		$this->form_validation->set_rules(
+			'inputGender', 
+			'Gender', 
+			'trim|required'
+		);
+
+		$this->form_validation->set_rules(
+			'new_password', 
+			'Password', 
+			'trim|required|min_length[4] | matches[inputPassword]',
+		);
+
+		$this->form_validation->set_rules(
+			'inputPassword', 
+			'Password', 
+			'trim|required|min_length[4]|matches[new_password]'
+		);
+
+		if ($this->form_validation->run() == false) {
+			$data['title'] = "Add Petugas";
+			$this->load->view('template/header', $data);
+			//Body
+			$this->load->view('v_petugas_add');
+			$this->load->view('template/footer');	
+		} else {
+			$this->savePetugas();
+		}
 	}
 
 	public function saveMember()
@@ -117,7 +164,7 @@ class User extends CI_Controller {
 			'birthdate' => $this->input->post('inputBd'),
 			'gender' => $this->input->post('inputGender'),
 			'status' => "member",
-			'password' => $this->input->post('inputPassword')
+			'password' => password_hash($this->input->post('inputPassword'), PASSWORD_BCRYPT) 
 		);
 
 		$query = $this->user->insertMember($data);
@@ -143,10 +190,11 @@ class User extends CI_Controller {
 			'birthdate' => $this->input->post('inputBd'),
 			'gender' => $this->input->post('inputGender'),
 			'status' => "petugas",
-			'password' => password_hash($this->input->post('inputPassword'), PASSWORD_DEFAULT)
+			'password' => password_hash($this->input->post('inputPassword'), PASSWORD_BCRYPT)
 		);
 
 		if ($this->user->insertPetugas($data)) {
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" rule="alert"> Data Berhasil disimpan! </div>');
 			redirect(base_url('User/petugas'));
 		}
 	}
@@ -155,7 +203,8 @@ class User extends CI_Controller {
 	{
 		$query = $this->user->deleteMember($id);
 		if($query === true){
-			echo "Data berhasil dihapus";
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" rule="alert"> Data Berhasil disimpan! </div>');
+			redirect(base_url('User'));
 		}
 	}
 
@@ -195,7 +244,8 @@ class User extends CI_Controller {
 
 		$query = $this->user->ubahMember($data, $id_user);
 		if($query == true){
-			echo "Data berhasil diubah";
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" rule="alert"> Data Berhasil disimpan! </div>');
+			redirect(base_url('User'));
 		}
 	}
 

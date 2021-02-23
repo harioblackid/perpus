@@ -23,16 +23,20 @@
 <script>
 	
 	//Fungsi untuk confirm HAPUS
-  $(document).on("click", "#btn-delete", function(link) {
-    bootbox.confirm({
+  $(document).on("click", "#btn-delete", function(e) {
+    var link = $(this).data('link')
+		bootbox.confirm({
 			message 	: "Anda yakin ingin menghapus data tersebut?",
 			callback	: function(result)
 			{ 
 				if(result == true)
 				{
-					
+					window.location.href = link
 				}
-				console.log(" Hasil nya adalah " + result);
+				else
+				{
+					bootbox.hideAll()
+				}
 			}
 		});
   });

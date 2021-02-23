@@ -32,7 +32,7 @@
               name = optional (Digunakan jika akan mengaktifkan VALIDASI) 
               -->
 
-              <form action="<?= base_url('Buku/saveBook') ?>" method="post" class="form-horizontal">
+              <form action="" method="post" class="form-horizontal">
                 <div class="form-group row">
                   <label for="title" class="col-sm-4 col-form-label">Title</label>
                   <div class="col-sm-8">
@@ -42,6 +42,8 @@
                       id="title" 
                       placeholder="Email" 
                       name="inputTitle">
+
+                      <?= form_error('inputTitle', '<small class="text-danger">', '</small>'); ?>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -53,19 +55,34 @@
                       id          ="author" 
                       placeholder ="Author" 
                       name        ="inputAuthor">
+                      <?= form_error('inputAuthor', '<small class="text-danger">', '</small>'); ?>
 
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="yearID" class="col-sm-4 col-form-label">Years</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" id="yearID" placeholder="Place" name="inputYear">
+                    <input 
+                      type="number" 
+                      class="form-control" 
+                      id="yearID" 
+                      placeholder="Place" 
+                      name="inputYear">
+                      <?= form_error('inputYear', '<small class="text-danger">', '</small>'); ?>
+
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="descID" class="col-sm-4 col-form-label">Description</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="descID" placeholder="Birthdate" name="inputDesc">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="descID" 
+                      placeholder="Description" 
+                      name="inputDesc">
+                      <?= form_error('inputDesc', '<small class="text-danger">', '</small>'); ?>
+
                   </div>
                 </div>
                 

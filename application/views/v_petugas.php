@@ -18,6 +18,8 @@
 	  <div class="container">
 			<div class="row">
 				<div class="col-12">
+				<?= $this->session->flashdata('pesan'); ?>
+
 					<div class="card card-primary card-outline">
 						<div class="card-header">
 							<a href="<?= base_url('User/addpetugas') ?>" class="btn btn-primary btn-sm">
